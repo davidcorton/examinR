@@ -1,11 +1,10 @@
 Package: examinR
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Handy Functions to Speed Up Analysis of Assessment Mark Distributions
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: David Orton
+Maintainer: David Orton <david.orton@york.ac.uk>
+Description: This is really only intended for personal use, though I may hand it on the whoever takes over this task from me in future. I realised I was doing some very similar operations on very similar data over and over again, so decided to make some standard functions instead.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

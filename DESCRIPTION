@@ -8,3 +8,4 @@ Description: This is really only intended for personal use, though I may hand it
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+Depends: data.table

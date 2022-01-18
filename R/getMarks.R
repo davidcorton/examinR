@@ -1,14 +1,14 @@
 getMarks <- function(marks, students, modules, simple = F) {
 
   # Read in marks, plus look-up tables for students and modules
-  marks <- data.table(read_sheet(marks))
+  data <- data.table(read_sheet(marks))
 
   if(simple == F) {
     students <- data.table(read_sheet(students))
     modules <- data.table(read_sheet(modules))
 
     # Merge the three tables together
-    data <- merge(marks, students, by = "Student")
+    data <- merge(data, students, by = "Student")
     data <- merge(data, modules, by = "Code")
 
     # Specify SSP categories

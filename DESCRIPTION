@@ -8,4 +8,7 @@ Description: This is really only intended for personal use, though I may hand it
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Depends: data.table
+Depends: data.table, beeswarm
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

@@ -9,7 +9,7 @@ getMarks <- function(marks, students, modules, simple = F) {
 
     # Merge the three tables together
     data <- merge(data, students, by = "Student")
-    data <- merge(data, modules, by = "Code")
+    data <- merge(data, modules, by = c("Code", "Component"))
 
     # Specify SSP categories
     data[is.na(SSP), SSP := "N"]
@@ -17,12 +17,12 @@ getMarks <- function(marks, students, modules, simple = F) {
 
     # Make sure all the variables are the right types
     data[, Shortname := as.factor(Shortname)]
-    data[, Code := as.factor(Code)]
+    data[, Module := as.factor(Module)]
     data[, Term := as.factor(Term)]
     data[, Gender := as.factor(Gender)]
     data[, Programme := as.factor(Programme)]
   }
-  data[, Module := as.factor(Module)]
+  data[, Code := as.factor(Code)]
   data[, Student := as.factor(Student)]
 
   # If text has found its way into Mark (most likely as a note after the actual numbers), purge it

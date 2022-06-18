@@ -1,4 +1,4 @@
-compareProgs <- function(x, output.name = "boxplots.jpg", title = "Marks by Programme", dimensions = c(1500, 1000), ...) {
+compareProgs <- function(x, output.name = "boxplots.jpg", title = "Marks by Programme", dimensions = c(1500, 1000), screen = F, ...) {
 
   # Remove missing values and zero marks
   x <- x[!is.na(Mark) & !Mark == 0]
@@ -13,8 +13,10 @@ compareProgs <- function(x, output.name = "boxplots.jpg", title = "Marks by Prog
   x <- merge(x, summ[, list(Programme, Prog)], by = "Programme")
 
   # Define margins and output device
-  jpeg(output.name, dimensions[1], dimensions[2], quality = 100)
-  par(mar = c(17, 6, 4, 1), oma = c(0, 0, 0, 0), mfrow = c(1, 1))
+  if(screen == F) {
+    jpeg(output.name, dimensions[1], dimensions[2], quality = 100)
+    par(mar = c(17, 6, 4, 1), oma = c(0, 0, 0, 0), mfrow = c(1, 1))
+  }
 
   # Set markers
   colcodes <- c("darkgoldenrod", "darkblue", "grey")
@@ -36,5 +38,7 @@ compareProgs <- function(x, output.name = "boxplots.jpg", title = "Marks by Prog
   text(x = 1:nrow(summ), y = 26, labels = summ$n, col="blue", cex = 2.5)
 
   # Close output device
-  dev.off()
+  if(screen == F) {
+    dev.off()
+  }
 }

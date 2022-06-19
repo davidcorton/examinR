@@ -8,7 +8,7 @@ getMarks <- function(marks, students, modules, simple = F) {
     modules <- data.table(read_sheet(modules))
 
     # Merge the three tables together
-    data <- merge(data, students, by = "Student")
+    data <- merge(data, students, by = "Student", all.x = T, all.y = F)
     data <- merge(data, modules, by = c("Code", "Component"))
 
     # Specify SSP categories

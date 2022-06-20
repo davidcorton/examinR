@@ -1,4 +1,4 @@
-studentSummary <- function(x) {
+studentSummaryPG <- function(x) {
   # Make table of average taught module marks per student
   moduleMeans <- x[!Module == "Dissertation", j = list(TaughtAverage = mean(Mark), nModules = length(Module)), by = c("Student", "Gender", "SSP")]
 

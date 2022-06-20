@@ -1,10 +1,12 @@
-gridHist <- function(x, output.name = "gridHistogram.jpg", title = "Mark", dimensions = c(1800, 1000)) {
+gridHist <- function(x, output.name = "gridHistogram.jpg", title = "Mark", dimensions = c(1800, 1000), screen = F) {
   # Calculate Mann-Whitney test result for genders
   MWgender <- wilcox.test(Mark ~ Gender, data = x[Gender %in% c("M", "F")])
   MW.SSP <- wilcox.test(Mark ~ SSP, data = x)
 
   # Define device and margins
-  jpeg(output.name, dimensions[1], dimensions[2], quality = 100)
+  if(screen == F) {
+    jpeg(output.name, dimensions[1], dimensions[2], quality = 100)
+  }
   par(mar = c(4, 5, 4, 1), oma = c(0, 0, 0, 0), mfrow = c(2, 2), pty = "m")
 
   # Plot histograms and add overall legends
@@ -25,6 +27,7 @@ gridHist <- function(x, output.name = "gridHistogram.jpg", title = "Mark", dimen
   mtext(title, side = 1, line = 3, cex = 2)
 
   # Close output device
-  dev.off()
-
+  if(screen == F) {
+    dev.off()
+  }
 }
